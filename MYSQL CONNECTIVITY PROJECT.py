@@ -2,9 +2,11 @@
 #                                                                                 ---|School Management System|---
 #                                                                             ---|  Designed and Maintained By  |---
 #                                                                       ---| SHAYYAN - Class XII SCI {2023-2024}|---
+
 import mysql.connector
-userName=input("\n ENTER MYSQL SERVER'S USERNAME: ")
-password=input("\n ENTER MYSQL SERVER'S PASSWORD: ")
+print("*" * 130)
+print("                                                 ---| Welcome to  School Management System by Shayyan|---\n")
+print("*" * 130)
 # Connecting from the server
 mydb = mysql.connector.connect(
   host="localhost",
@@ -12,19 +14,12 @@ mydb = mysql.connector.connect(
   password="root",
   database="school")
 print(mydb,"connected to server")
+print("*"*130)
+userName=input("\n ENTER MYSQL SERVER'S USERNAME: ")
+print("*"*130)
+password=input(" ENTER MYSQL SERVER'S PASSWORD: ")
+print("*"*130)
 
-# Define the function to display the menu
-def menu():
-    print("*" * 130)
-    print("                                                 ---| Welcome to  School Management System by Shayyan|---\n")
-    print("*" * 130)
-    #    print(". Exit")
-    print("(1.) Add New Student record                                          (2.) View Student details")
-    print("(3.) Update Student details                                            (4.) Delete Student details")
-    print("(5.) Add new Staff record                                               (6.) View Staff details")    
-    print("(7.) Update Staff details                                                 (8.) Delete Staff details")
-    print("(9.) Add Fee deposit details                                           (10.) View Fee datails")
-    print("(11.) Update Fee datails                                                  (12.) Delete Fee datails                     (13.) Exit")
 # Define the function to add a new student
 def add_student():
     Id=input("Enter Student SrNo: ")
@@ -35,6 +30,7 @@ def add_student():
     cursor = mydb.cursor()
     # CREATING A TABLE
 #    cursor.execute('CREATE TABLE students (Id VARCHAR(255),name VARCHAR(255), age VARCHAR(255), gender VARCHAR(255), room_no VARCHAR(255))')
+
 # Inserting Values
     sql = "INSERT INTO students (Id,name, age, gender, room_no) VALUES (%s,%s, %s, %s, %s)"
     val = (Id,name, age, gender, room_no)
@@ -49,7 +45,7 @@ def view_students():
     result = cursor.fetchall()
     for row in result:
         print(row)
-
+        
 # Define the function to update student details
 def update_student():
     id = input("Enter student SrNo: ")
@@ -85,6 +81,7 @@ def add_staff():
 
     # CREATING A TABLE
 #    cursor.execute('create table Staff(Id varchar(50),post varchar(50),name varchar(50),salary varchar(50),phone varchar(50))')
+
 # Inserting Values
     sqls = "INSERT INTO staff (Id,post,name,salary,phone) VALUES (%s,%s,%s, %s, %s)"
     vals = (Id,post,name,salary,phone)
@@ -136,6 +133,7 @@ def fee():
     cursor = mydb.cursor()
 # CREATING A TABLE
 #    cursor.execute('create table fee(SrNo varchar(50),Name varchar(50),Class varchar(50),Status varchar(50),Quarter varchar(50),PaidAmt varchar(50))')
+
  # Inserting Values
     msql = "INSERT INTO fee (SrNo,Name,Class,Status,Quarter,PaidAmt) VALUES (%s,%s, %s, %s, %s,%s)"
     valu = (SrNo,Name,Class,Status,Quarter,PaidAmt)
@@ -150,6 +148,7 @@ def view_fee():
     result = cursor.fetchall()
     for row in result:
         print(row)
+
 # Define the function to update Fee details
 def update_fee():
     SrNo = input("Enter student SrNo: ")
@@ -175,42 +174,62 @@ def delete_fee():
     mydb.commit()
     print(cursor.rowcount, "record(s) deleted.")
 
-# Call the menu function
-while True:
-    menu()
-    
-    # Get the user's choice
-    choice = input("Enter your choice: ")
-
     # Execute the selected option
-    if choice == '1':
+    # Get the user's choice
+print("                                                            ---| Modules in School Management System |---")
+print("[1.]->| Student record Module |                                            [2]->| Staff record Module |")
+print("[3.]->| Fee record Module |                                                    [4.]->| Exit |                        \n")
+
+# Get the user's choice:
+# if option first: 
+option = int(input("Enter your choice: "))
+if option==1:
+    print("\n[1.]->| Add New Student record |                                           [2.]->|  View Student details | ")
+    print("[3.]->| Update Student details |                                              [4.]->| Delete Student details | \n")
+    opp = int(input("Enter your choice: "))
+    if opp==1:
         add_student()
-    elif choice == '2':
+    elif opp==2:
         view_students()
-    elif choice == '3':
+    elif opp==3:
         update_student()
-    elif choice == '4':
+    elif opp==4:
         delete_student()
-    elif choice == '5':
+
+## if option Second:
+elif option==2:
+    print("[1.]->| Add New Staff record |                                           [2.]->| View Staff details | ")
+    print("[3.] ->| Update Staff details |                                             [4.]->| Delete Staff details | ")
+    opp = int(input("Enter your choice: "))
+    if opp==1:
         add_staff()
-    elif choice == '6':
+    elif opp==2:
         view_staff()
-    elif choice == '7':
+    elif opp==3:
         update_staff()
-    elif choice == '8':
+    elif opp==4:
         delete_staff()
-    elif choice == '9':
+
+### if option Third:
+elif option==3:
+    print("(1.)->| Add Fee deposit details |                                            (2.)->| View Fee datails | ")
+    print("(3.)->| Update Fee datails |                                                   (4.)->| Delete Fee datails | ")
+    opp = int(input("Enter your choice: "))
+    if opp==1:
         fee()
-    elif choice == '10':
+    elif opp==2:
         view_fee()
-    elif choice == '11':
+    elif opp==3:
         update_fee()
-    elif choice == '12':
+    elif opp==4:
         delete_fee()
-    elif choice == '13':
-        print("Exited Succesfully, thanks for coming :-)")
-        break
-    else:
-        print("Invalid choice. Please try again.")
+
+#### if option Fourth:
+elif option==4:
+    print("Exited Succesfully, thanks for coming :-)")
+
+else:
+    print("Invalid choice. Please try again.")
+
 # Disconnecting from the server
 mydb.close()
