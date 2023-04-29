@@ -1,20 +1,23 @@
 import pandas as pd
 import os
-
-
+print("\t\t\t +---------------------------------------------------------------+")
+print("\t\t\t| Welcome To Patient Managment System by Shayyan |")
+print("\t\t\t +---------------------------------------------------------------+")
 #        PATIENT MANAGEMENT MENU               
 def pmenu():
     #os.system("cls")
-    print("\t\t\t +-----------------------------------+")
-    print("\t\t\t |     PATIENT MAIN MENU      |")
-    print("\t\t\t +-----------------------------------+")
-    print("\t\t\t | 1. New Patient Registration |")
-    print("\t\t\t | 2. Update Patient Details    |")
-    print("\t\t\t | 3. Remove Patient                 |")
-    print("\t\t\t | 4. Search Patient by PNo     |")
-    print("\t\t\t | 5. All Patient List                  |")
-    print("\t\t\t | 6. EXIT                                   |")
-    print("\t\t\t +----------------------------------+")
+    
+    input("Press ENTER KEY to continue.....")
+    print("\t\t\t           +-----------------------------------+")
+    print("\t\t\t           |     PATIENT MAIN MENU      |")
+    print("\t\t\t           +-----------------------------------+")
+    print("\t\t\t           | 1. New Patient Registration |")
+    print("\t\t\t           | 2. Update Patient Details    |")
+    print("\t\t\t           | 3. Remove Patient                 |")
+    print("\t\t\t           | 4. Search Patient by PNo     |")
+    print("\t\t\t           | 5. All Patient List                  |")
+    print("\t\t\t           | 6. EXIT                                   |")
+    print("\t\t\t           +----------------------------------+")
     print()
 
 
@@ -162,4 +165,3 @@ def getchoice():
 #main
 
 getchoice()
-
