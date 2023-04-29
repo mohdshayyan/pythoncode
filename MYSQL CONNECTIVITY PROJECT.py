@@ -196,12 +196,16 @@ def getchoice():
             opp = input("Enter your choice: ")
             if opp=='1':
                 add_student()
+                input("Press ENTER KEY to continue.....")
             elif opp=='2':
                 view_students()
+                input("Press ENTER KEY to continue.....")
             elif opp=='3':
                 update_student()
+                input("Press ENTER KEY to continue.....")
             elif opp=='4':
                 delete_student()
+                input("Press ENTER KEY to continue.....")
 
 ## if option Second:
         elif option=='2':
@@ -210,12 +214,16 @@ def getchoice():
             opp =input("Enter your choice: ")
             if opp=='1':
                 add_staff()
+                input("Press ENTER KEY to continue.....")
             elif opp=='2':
                 view_staff()
+                input("Press ENTER KEY to continue.....")
             elif opp=='3':
                 update_staff()
+                input("Press ENTER KEY to continue.....")
             elif opp=='4':
                 delete_staff()
+                input("Press ENTER KEY to continue.....")
 
 ### if option Third:
         elif option=='3':
@@ -224,13 +232,16 @@ def getchoice():
             opp = input("Enter your choice: ")
             if opp=='1':
                 fee()
+                input("Press ENTER KEY to continue.....")
             elif opp=='2':
                 view_fee()
+                input("Press ENTER KEY to continue.....")
             elif opp=='3':
                 update_fee()
+                input("Press ENTER KEY to continue.....")
             elif opp=='4':
                 delete_fee()
-
+                input("Press ENTER KEY to continue.....")
 #### if option Fourth:
         elif option=='4':
             print("Exited Succesfully, thanks for coming :-)")
@@ -239,6 +250,7 @@ def getchoice():
         else:
             print("Invalid choice. Please try again.")
 # Recall Choice function =>
+
 getchoice()
 # Disconnecting from the server =>
 mydb.close()
