@@ -75,7 +75,7 @@ def patRemove():
     
 #              DISPLAY ALL PATIENT              
 def dispPatient():
-    patdf = pd.read_csv("csvfile\\patientnew.csv", index_col= 0)
+    patdf = pd.read_csv("csvfile\\patientnew.csv", index_col= 1)
     print(patdf)
 
 
