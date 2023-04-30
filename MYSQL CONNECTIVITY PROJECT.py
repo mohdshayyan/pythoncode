@@ -25,21 +25,26 @@ print("*"*130)
 
 # Define the function to add a new student
 def add_student():
-    Id=input("Enter Student SrNo: ")
-    name = input("Enter student Name: ")
-    age = input("Enter student DOB: ")
-    gender = input("Enter student gender: ")
-    room_no = input("Enter student Class: ")
-    cursor = mydb.cursor()
+        while True:
+            Id=input("Enter Student SrNo: ")
+            if serbyId(Id)> 0 :
+                print("Duplicate Id, ENTER A VALID ID")        
+            else:
+                break
+        name = input("Enter student Name: ")
+        age = input("Enter student DOB: ")
+        gender = input("Enter student gender: ")
+        room_no = input("Enter student Class: ")
+        cursor = mydb.cursor()
     # CREATING A TABLE
 #    cursor.execute('CREATE TABLE students (Id VARCHAR(255),name VARCHAR(255), age VARCHAR(255), gender VARCHAR(255), room_no VARCHAR(255))')
 
 # Inserting Values
-    sql = "INSERT INTO students (Id,name, age, gender, room_no) VALUES (%s,%s, %s, %s, %s)"
-    val = (Id,name, age, gender, room_no)
-    cursor.execute(sql, val)
-    mydb.commit()
-    print(cursor.rowcount, "record(s) inserted.")
+        sql = "INSERT INTO students (Id,name, age, gender, room_no) VALUES (%s,%s, %s, %s, %s)"
+        val = (Id,name, age, gender, room_no)
+        cursor.execute(sql, val)
+        mydb.commit()
+        print(cursor.rowcount, "record(s) inserted.")
 
 # Define the function to view student details
 def view_students():
@@ -197,15 +202,19 @@ def getchoice():
             if opp=='1':
                 add_student()
                 input("Press ENTER KEY to continue.....")
+                print()
             elif opp=='2':
                 view_students()
                 input("Press ENTER KEY to continue.....")
+                print()
             elif opp=='3':
                 update_student()
                 input("Press ENTER KEY to continue.....")
+                print()
             elif opp=='4':
                 delete_student()
                 input("Press ENTER KEY to continue.....")
+                print()
 
 ## if option Second:
         elif option=='2':
@@ -215,15 +224,19 @@ def getchoice():
             if opp=='1':
                 add_staff()
                 input("Press ENTER KEY to continue.....")
+                print()
             elif opp=='2':
                 view_staff()
                 input("Press ENTER KEY to continue.....")
+                print()
             elif opp=='3':
                 update_staff()
                 input("Press ENTER KEY to continue.....")
+                print()
             elif opp=='4':
                 delete_staff()
                 input("Press ENTER KEY to continue.....")
+                print()
 
 ### if option Third:
         elif option=='3':
@@ -233,22 +246,33 @@ def getchoice():
             if opp=='1':
                 fee()
                 input("Press ENTER KEY to continue.....")
+                print()
             elif opp=='2':
                 view_fee()
                 input("Press ENTER KEY to continue.....")
+                print()
             elif opp=='3':
                 update_fee()
                 input("Press ENTER KEY to continue.....")
+                print()
             elif opp=='4':
                 delete_fee()
                 input("Press ENTER KEY to continue.....")
+                print()
 #### if option Fourth:
         elif option=='4':
-            print("Exited Succesfully, thanks for coming :-)")
+            print()
+            print("Exited !")
+            print("Succesfully,")
+            print("Thanks")
+            print("For")
+            print("Coming :-)")
+            print()
+            print()
+            print()
+            print()
             break
-            
-        else:
-            print("Invalid choice. Please try again.")
+        
 # Recall Choice function =>
 
 getchoice()
