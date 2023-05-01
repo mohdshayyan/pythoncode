@@ -9,7 +9,7 @@ print(mydb,"connected to server")
 
 # Define the function to display the menu
 def menu():
-    print("                                                 ---| Welcome to  School System by Shayyan|---\n")
+    print("                                                 ---| Welcome to System |---\n")
     print("(1.) Add New record                                          (2.) View details")
     print("(3.) Update details                                          (4.) Delete details")
 
