@@ -10,12 +10,8 @@ print(mydb,"connected to server")
 # Define the function to display the menu
 def menu():
     print("                                                 ---| Welcome to  School System by Shayyan|---\n")
-    print("(1.) Add New   record                                          (2.) View  details")
-    print("(3.) Update   details                                            (4.) Delete   details")
-    print("(5.) Add new   record                                               (6.) View   details")    
-    print("(7.) Update   details                                                 (8.) Delete   details")
-    print("(9.) Add   deposit details                                           (10.) View   datails")
-    print("(11.) Update   datails                                                  (12.) Delete   datails                     (13.) Exit")
+    print("(1.) Add New record                                          (2.) View details")
+    print("(3.) Update details                                          (4.) Delete details")
 
 # Define the function to add a new student
 def addEmp():
@@ -34,51 +30,6 @@ def addEmp():
     mydb.commit()
     print(cursor.rowcount, "record(s) inserted.")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # Call the menu function
 while True:
     menu()
@@ -93,10 +44,3 @@ while True:
         print("Invalid choice. Please try again.")
 # Disconnecting from the server
 mydb.close()
-
-
-
-
-
-
-
