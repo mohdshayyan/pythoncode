@@ -1,0 +1,10 @@
+import numpy as np
+import pandas as pd
+# Q.1=>
+EngAlpha=pd.Series([chr(s) for s in range(65,91)])
+print(EngAlpha)
+
+# Q.2=>
+
+
+
