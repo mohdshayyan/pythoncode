@@ -1,18 +1,28 @@
 import numpy as np
 import pandas as pd
-# Q.1=>
+
+# Q.5=>
+# a)=>
 EngAlpha=pd.Series([chr(s) for s in range(65,91)])
 print(EngAlpha)
-
-# Q.2=>
+'''
+# b)=>
 vowels=pd.Series([1,2,3,4,5],index=['a','e','i','o','u'])
 vowels[:]=0
 print(vowels)
 
-# Q.3=>
+# c)=>
 dic={'Shayyan':1,'Mustufa':2,'Faizan':3,'Sufiyan':4,'Ayan':5}
 friends=pd.Series(dic)
 print(friends)
 
+# d)=>
+emp=pd.Series([])
+print(emp.empty)
+
+# e)=>
+Days=np.array([31,28,31,30,31,30,31,31,30,31,30,31])
+Month_Days=pd.Series(Days,index=[1,2,3,4,5,6,7,8,9,10,11,12])
+print(Month_Days)
 
 
