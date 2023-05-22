@@ -5,6 +5,14 @@ EngAlpha=pd.Series([chr(s) for s in range(65,91)])
 print(EngAlpha)
 
 # Q.2=>
+vowels=pd.Series([1,2,3,4,5],index=['a','e','i','o','u'])
+vowels[:]=0
+print(vowels)
+
+# Q.3=>
+dic={'Shayyan':1,'Mustufa':2,'Faizan':3,'Sufiyan':4,'Ayan':5}
+friends=pd.Series(dic)
+print(friends)
 
 
 
