@@ -277,7 +277,6 @@ def getchoice():
 #            break
         
 # Recall Choice function =>
-
 getchoice()
 # Disconnecting from the server =>
 mydb.close()
