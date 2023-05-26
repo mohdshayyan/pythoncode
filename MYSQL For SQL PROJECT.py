@@ -275,7 +275,7 @@ def getchoice():
             print()
             print()
             print()
-#            break
+            break
         
 # Recall Choice function =>
 
