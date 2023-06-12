@@ -39,7 +39,7 @@ def add_student():
         room_no = input("Enter student Class: ")
         cursor = mydb.cursor()
     # CREATING A TABLE
-#    cursor.execute('CREATE TABLE students (Id VARCHAR(255),name VARCHAR(255), age VARCHAR(255), gender VARCHAR(255), room_no VARCHAR(255))')
+    cursor.execute('CREATE TABLE students (Id VARCHAR(255),name VARCHAR(255), age VARCHAR(255), gender VARCHAR(255), room_no VARCHAR(255))')
 
 # Inserting Values
         sql = "INSERT INTO students (Id,name, age, gender, room_no) VALUES (%s,%s, %s, %s, %s)"
@@ -90,7 +90,7 @@ def add_staff():
     cursor = mydb.cursor()
 
     # CREATING A TABLE
-#    cursor.execute('create table Staff(Id varchar(50),post varchar(50),name varchar(50),salary varchar(50),phone varchar(50))')
+    cursor.execute('create table Staff(Id varchar(50),post varchar(50),name varchar(50),salary varchar(50),phone varchar(50))')
 
 # Inserting Values
     sqls = "INSERT INTO staff (Id,post,name,salary,phone) VALUES (%s,%s,%s, %s, %s)"
@@ -142,7 +142,7 @@ def fee():
     PaidAmt= input("Enter PaidAmt : ")
     cursor = mydb.cursor()
 # CREATING A TABLE
-#    cursor.execute('create table fee(SrNo varchar(50),Name varchar(50),Class varchar(50),Status varchar(50),Quarter varchar(50),PaidAmt varchar(50))')
+    cursor.execute('create table fee(SrNo varchar(50),Name varchar(50),Class varchar(50),Status varchar(50),Quarter varchar(50),PaidAmt varchar(50))')
 
  # Inserting Values
     msql = "INSERT INTO fee (SrNo,Name,Class,Status,Quarter,PaidAmt) VALUES (%s,%s, %s, %s, %s,%s)"
