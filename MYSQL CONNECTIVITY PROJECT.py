@@ -1,18 +1,17 @@
-
 #                                                                                       ---| PYTHON CODING |---
 #                                                                                 ---|School Management System|---
 #                                                                             ---|  Designed and Maintained By  |---
 #                                                                       ---| SHAYYAN - Class XII SCI {2023-2024}|---
 
 import mysql.connector
-
-
+print("*" * 135)
+print("                                   ---| Welcome to  School Management System by Shayyan|---\n")
+print("*" * 135)
 # Connecting from the server
-
 userName=input("\n ENTER MYSQL SERVER'S USERNAME: ")
-print("*"*130)
+print("*"*135)
 password=input(" ENTER MYSQL SERVER'S PASSWORD: ")
-print("*"*130)
+print("*"*135)
 mydb = mysql.connector.connect(
   host="localhost",
   user=userName,
@@ -20,26 +19,18 @@ mydb = mysql.connector.connect(
   database="school")
 print(mydb,"connected to server")
 print("\n")
-print("*"*140)
-print("                                     ---| Welcome to  School Management System by Shayyan|---\n")
-print("*" * 140)
+print("\n")
 
 # Define the function to add a new student
-def create_students():
-        cursor = mydb.cursor()
-        cursor.execute('CREATE TABLE IF NOT EXISTS students (Id VARCHAR(255),name VARCHAR(255), age VARCHAR(255), gender VARCHAR(255), room_no VARCHAR(255))')
 def add_student():
-        while True:
-            Id=input("Enter Student SrNo: ")
-            if serbyId(Id)> 0 :
-                print("Duplicate Id, ENTER A VALID ID")        
-            else:
-                break
+        Id=input("Enter Student SrNo: ")
         name = input("Enter student Name: ")
         age = input("Enter student DOB: ")
         gender = input("Enter student gender: ")
         room_no = input("Enter student Class: ")
         cursor = mydb.cursor()
+    # CREATING A TABLE
+        cursor.execute('CREATE TABLE students(Id VARCHAR(255),name VARCHAR(255), age VARCHAR(255), gender VARCHAR(255), room_no VARCHAR(255))')
 
 # Inserting Values
         sql = "INSERT INTO students (Id,name, age, gender, room_no) VALUES (%s,%s, %s, %s, %s)"
@@ -80,11 +71,6 @@ def delete_student():
     mydb.commit()
     print(cursor.rowcount, "record(s) deleted.")
 
-    # CREATING A TABLE
-def create_Staff():
-        cursor = mydb.cursor()
-        cursor.execute('CREATE TABLE IF NOT EXISTS Staff(Id varchar(50),post varchar(50),name varchar(50),salary varchar(50),phone varchar(50))')
-
 # Define the function to add a new staff
 def add_staff():
     Id=input("Enter staff ID: ")
@@ -94,6 +80,8 @@ def add_staff():
     phone = input("Enter staff Phone no: ")
     cursor = mydb.cursor()
 
+    # CREATING A TABLE
+    cursor.execute('create table Staff(Id varchar(50),post varchar(50),name varchar(50),salary varchar(50),phone varchar(50))')
 
 # Inserting Values
     sqls = "INSERT INTO staff (Id,post,name,salary,phone) VALUES (%s,%s,%s, %s, %s)"
@@ -134,10 +122,6 @@ def delete_staff():
     mydb.commit()
     print(cursor.rowcount, "record(s) deleted.")
 
-# CREATING A TABLE
-def create_fee():
-        cursor = mydb.cursor()
-        cursor.execute('CREATE TABLE IF NOT EXISTS fee(SrNo varchar(50),Name varchar(50),Class varchar(50),Status varchar(50),Quarter varchar(50),PaidAmt varchar(50))')
 
 # Define the function to add Fee details
 def fee():
@@ -148,6 +132,8 @@ def fee():
     Quarter= input("Enter Quarter : ")
     PaidAmt= input("Enter PaidAmt : ")
     cursor = mydb.cursor()
+# CREATING A TABLE
+    cursor.execute('create table fee(SrNo varchar(50),Name varchar(50),Class varchar(50),Status varchar(50),Quarter varchar(50),PaidAmt varchar(50))')
 
  # Inserting Values
     msql = "INSERT INTO fee (SrNo,Name,Class,Status,Quarter,PaidAmt) VALUES (%s,%s, %s, %s, %s,%s)"
@@ -192,28 +178,23 @@ def delete_fee():
     # Execute the selected option
     # Get the user's choice
 def menu():
-    print("                                             --------------------------------------------------")    
-    print("                                       ---| Modules in School Management System |---")
-    print("                                             --------------------------------------------------")
+    print("                                                                --------------------------------------------------")    
+    print("                                                                   ---| Modules in School Management System |---")
+    print("                                                                --------------------------------------------------\n\n")
     print("[1.]->| Student record Module |                                            [2.]->| Staff record Module |")
-    print("[3.]->| Fee record Module |                                                   [4.]->| Exit |                        \n")
-
+    print("[3.]->| Fee record Module |                                                [4.]->| Exit |                        \n")
 # Get the user's choice:
 # if option first:
 def getchoice():
     while True:
         menu()
         print("")
-        option = input("Enter your choice: ")
+        option = input("Enter your choice:: ")
         if option=='1':
-            print("\n[0.]->| CREATE TABLE Student record | ")
-            print("[1.]->| Add New Student record |                                           [2.]->|  View Student details | ")
+            print("\n[1.]->| Add New Student record |                                           [2.]->|  View Student details | ")
             print("[3.]->| Update Student details |                                           [4.]->| Delete Student details | \n")
-            opp = input("Enter your choice: ")
-            if opp=='0':
-                create_students()
-                print("Table created successfully.")
-            elif opp=='1':
+            opp = input("Enter your choice:: ")
+            if opp=='1':
                 add_student()
                 input("Press ENTER KEY to continue.....")
                 print()
@@ -232,14 +213,10 @@ def getchoice():
 
 ## if option Second:
         elif option=='2':
-            print("\n[0.]->| Create Table Staff record | ")
             print("[1.]->| Add New Staff record |                                           [2.]->| View Staff details | ")
             print("[3.] ->| Update Staff details |                                          [4.]->| Delete Staff details | ")
             opp =input("Enter your choice: ")
-            if opp=='0':
-                create_Staff()
-                print("Table created successfully.")
-            elif opp=='1':
+            if opp=='1':
                 add_staff()
                 input("Press ENTER KEY to continue.....")
                 print()
@@ -258,13 +235,9 @@ def getchoice():
 
 ### if option Third:
         elif option=='3':
-            print("\n[0.]->| Create Table Fee record | ")
             print("[1.]->| Add Fee deposit details |                                            [2.]->| View Fee datails | ")
             print("[3.]->| Update Fee datails |                                                 [4.]->| Delete Fee datails | ")
             opp = input("Enter your choice: ")
-            if opp=='0':
-                create_fee()
-                print("Table created successfully.")
             if opp=='1':
                 fee()
                 input("Press ENTER KEY to continue.....")
@@ -299,4 +272,3 @@ def getchoice():
 getchoice()
 # Disconnecting from the server =>
 mydb.close()
-
