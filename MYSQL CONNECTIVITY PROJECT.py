@@ -272,3 +272,4 @@ def getchoice():
 getchoice()
 # Disconnecting from the server =>
 mydb.close()
+
