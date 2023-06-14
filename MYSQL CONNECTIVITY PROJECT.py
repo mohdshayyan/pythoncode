@@ -30,7 +30,7 @@ def add_student():
         room_no = input("Enter student Class: ")
         cursor = mydb.cursor()
     # CREATING A TABLE
-        cursor.execute('CREATE TABLE students(Id VARCHAR(255),name VARCHAR(255), age VARCHAR(255), gender VARCHAR(255), room_no VARCHAR(255))')
+#        cursor.execute('CREATE TABLE students(Id VARCHAR(255),name VARCHAR(255), age VARCHAR(255), gender VARCHAR(255), room_no VARCHAR(255))')
 
 # Inserting Values
         sql = "INSERT INTO students (Id,name, age, gender, room_no) VALUES (%s,%s, %s, %s, %s)"
@@ -81,7 +81,7 @@ def add_staff():
     cursor = mydb.cursor()
 
     # CREATING A TABLE
-    cursor.execute('create table Staff(Id varchar(50),post varchar(50),name varchar(50),salary varchar(50),phone varchar(50))')
+#    cursor.execute('create table Staff(Id varchar(50),post varchar(50),name varchar(50),salary varchar(50),phone varchar(50))')
 
 # Inserting Values
     sqls = "INSERT INTO staff (Id,post,name,salary,phone) VALUES (%s,%s,%s, %s, %s)"
@@ -100,8 +100,8 @@ def view_staff():
         
 # Define the function to update staff details
 def update_staff():
-    Id=input("Enter staff ID: ")
-    post=input("Enter staff Post: ")
+    Id = input("Enter staff ID: ")
+    post = input("Enter staff Post: ")
     name = input("Enter staff Name: ")
     salary = input("Enter staff Salary: ")
     phone = input("Enter staff Phone no: ")
@@ -133,7 +133,7 @@ def fee():
     PaidAmt= input("Enter PaidAmt : ")
     cursor = mydb.cursor()
 # CREATING A TABLE
-    cursor.execute('create table fee(SrNo varchar(50),Name varchar(50),Class varchar(50),Status varchar(50),Quarter varchar(50),PaidAmt varchar(50))')
+#    cursor.execute('create table fee(SrNo varchar(50),Name varchar(50),Class varchar(50),Status varchar(50),Quarter varchar(50),PaidAmt varchar(50))')
 
  # Inserting Values
     msql = "INSERT INTO fee (SrNo,Name,Class,Status,Quarter,PaidAmt) VALUES (%s,%s, %s, %s, %s,%s)"
@@ -178,11 +178,11 @@ def delete_fee():
     # Execute the selected option
     # Get the user's choice
 def menu():
-    print("                                                                --------------------------------------------------")    
-    print("                                                                   ---| Modules in School Management System |---")
-    print("                                                                --------------------------------------------------\n\n")
+    print("                                                                ------------------------------------------------------")    
+    print("                                                             ---| Modules in School Management System |---")
+    print("                                                                ------------------------------------------------------\n\n")
     print("[1.]->| Student record Module |                                            [2.]->| Staff record Module |")
-    print("[3.]->| Fee record Module |                                                [4.]->| Exit |                        \n")
+    print("[3.]->| Fee record Module |                                                   [4.]->| Exit |                        \n")
 # Get the user's choice:
 # if option first:
 def getchoice():
@@ -192,7 +192,7 @@ def getchoice():
         option = input("Enter your choice:: ")
         if option=='1':
             print("\n[1.]->| Add New Student record |                                           [2.]->|  View Student details | ")
-            print("[3.]->| Update Student details |                                           [4.]->| Delete Student details | \n")
+            print("[3.]->| Update Student details |                                              [4.]->| Delete Student details | \n")
             opp = input("Enter your choice:: ")
             if opp=='1':
                 add_student()
@@ -214,7 +214,7 @@ def getchoice():
 ## if option Second:
         elif option=='2':
             print("[1.]->| Add New Staff record |                                           [2.]->| View Staff details | ")
-            print("[3.] ->| Update Staff details |                                          [4.]->| Delete Staff details | ")
+            print("[3.] ->| Update Staff details |                                            [4.]->| Delete Staff details | ")
             opp =input("Enter your choice: ")
             if opp=='1':
                 add_staff()
@@ -235,8 +235,8 @@ def getchoice():
 
 ### if option Third:
         elif option=='3':
-            print("[1.]->| Add Fee deposit details |                                            [2.]->| View Fee datails | ")
-            print("[3.]->| Update Fee datails |                                                 [4.]->| Delete Fee datails | ")
+            print("[1.]->| Add Fee deposit details |                                            [2.]->| View Fee details | ")
+            print("[3.]->| Update Fee details |                                                   [4.]->| Delete Fee details | ")
             opp = input("Enter your choice: ")
             if opp=='1':
                 fee()
@@ -272,4 +272,3 @@ def getchoice():
 getchoice()
 # Disconnecting from the server =>
 mydb.close()
-
