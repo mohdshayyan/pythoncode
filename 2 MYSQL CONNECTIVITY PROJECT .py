@@ -1,0 +1,273 @@
+#                                                                                       ---| PYTHON CODING |---
+#                                                                                 ---|School Management System|---
+#                                                                             ---|  Designed and Maintained By  |---
+#                                                                       ---| SHAYYAN - Class XII SCI {2023-2024}|---
+
+import mysql.connector
+print("*" * 135)
+print("                                   ---| Welcome to  School Management System by Shayyan|---\n")
+print("*" * 135)
+# Connecting from the server
+userName=input("\n ENTER MYSQL SERVER'S USERNAME: ")
+print("*"*135)
+password=input(" ENTER MYSQL SERVER'S PASSWORD: ")
+print("*"*135)
+mydb = mysql.connector.connect(
+  host="localhost",
+  user=userName,
+  password=password,
+  database="school")
+print(mydb,"connected to server")
+print("\n")
+print("\n")
+
+# Define the function to add a new student
+def add_student():
+        Id=input("Enter Student SrNo: ")
+        name = input("Enter student Name: ")
+        age = input("Enter student DOB: ")
+        gender = input("Enter student gender: ")
+        room_no = input("Enter student Class: ")
+        cursor = mydb.cursor()
+    # CREATING A TABLE
+        cursor.execute('CREATE TABLE students (Id VARCHAR(255) PRIMARY KEY, name VARCHAR(255), age VARCHAR(255), gender VARCHAR(255), room_no VARCHAR(255))')
+
+# Inserting Values
+        sql = "INSERT INTO students (Id,name, age, gender, room_no) VALUES (%s,%s, %s, %s, %s)"
+        val = (Id,name, age, gender, room_no)
+        cursor.execute(sql, val)
+        mydb.commit()
+        print(cursor.rowcount, "record(s) inserted.")
+
+# Define the function to view student details
+def view_students():
+    cursor = mydb.cursor()
+    cursor.execute("SELECT * FROM students")
+    result = cursor.fetchall()
+    for row in result:
+        print(row)
+        
+# Define the function to update student details
+def update_student():
+    id = input("Enter student SrNo: ")
+    name = input("Enter student Name: ")
+    age = input("Enter student DOB: ")
+    gender = input("Enter student gender: ")
+    room_no = input("Enter student Class: ")
+    cursor = mydb.cursor()
+    sql = "UPDATE students SET name = %s, age = %s, gender = %s, room_no = %s WHERE id = %s"
+    val = (name, age, gender, room_no, id)
+    cursor.execute(sql, val)
+    mydb.commit()
+    print(cursor.rowcount, "record(s) updated.")
+
+# Define the function to delete student details
+def delete_student():
+    Id = input("Enter student SrNo: ")
+    cursor = mydb.cursor()
+    sql = "DELETE FROM students WHERE Id = %s"
+    val = (Id,)
+    cursor.execute(sql, val)
+    mydb.commit()
+    print(cursor.rowcount, "record(s) deleted.")
+
+# Define the function to add a new staff
+def add_staff():
+    Id=input("Enter staff ID: ")
+    post=input("Enter staff Post: ")
+    name = input("Enter staff Name: ")
+    salary = input("Enter staff Salary: ")
+    phone = input("Enter staff Phone no: ")
+    cursor = mydb.cursor()
+
+    # CREATING A TABLE
+    cursor.execute('CREATE TABLE staff (Id VARCHAR(255) PRIMARY KEY, post VARCHAR(255), name VARCHAR(255), salary VARCHAR(255), phone VARCHAR(255))')
+
+# Inserting Values
+    sqls = "INSERT INTO staff (Id,post,name,salary,phone) VALUES (%s,%s,%s, %s, %s)"
+    vals = (Id,post,name,salary,phone)
+    cursor.execute(sqls, vals)
+    mydb.commit()
+    print(cursor.rowcount, "record(s) inserted.")
+
+# Define the function to view student details
+def view_staff():
+    cursor = mydb.cursor()
+    cursor.execute("SELECT * FROM staff")
+    result = cursor.fetchall()
+    for row in result:
+        print(row)
+
+def update_staff():
+    Id = input("Enter staff ID: ")
+    post = input("Enter staff Post: ")
+    name = input("Enter staff Name: ")
+    salary = input("Enter staff Salary: ")
+    phone = input("Enter staff Phone no: ")
+    cursor = mydb.cursor()
+    sql = "UPDATE staff SET post = %s, name = %s, salary = %s, phone = %s WHERE Id = %s"
+    val = (post, name, salary, phone, Id)
+    cursor.execute(sql, val)
+    mydb.commit()
+    print(cursor.rowcount, "record(s) updated.")
+
+# Define the function to delete staff details
+def delete_staff():
+    Id = input("Enter staff ID: ")
+    cursor = mydb.cursor()
+    sql = "DELETE FROM staff WHERE Id = %s"
+    val = (Id,)
+    cursor.execute(sql, val)
+    mydb.commit()
+    print(cursor.rowcount, "record(s) deleted.")
+
+
+# Define the function to add Fee details
+def fee():
+    student_id=input("Enter Student SrNo: ")
+    Name = input("Enter Payer Name: ")
+    Class = input("Enter Payer Class: ")
+    Status= input("Enter Status(Paid/Due) : ")
+    Quarter= input("Enter Quarter : ")
+    PaidAmt= input("Enter PaidAmt : ")
+    cursor = mydb.cursor()
+# CREATING A TABLE
+    cursor.execute('CREATE TABLE fee (student_id VARCHAR(255), Name VARCHAR(255), Class VARCHAR(255), Status VARCHAR(255), Quarter VARCHAR(255), PaidAmt VARCHAR(255), FOREIGN KEY (student_id) REFERENCES students(Id))')
+
+ # Inserting Values
+    msql = "INSERT INTO fee (student_id,Name,Class,Status,Quarter,PaidAmt) VALUES (%s,%s, %s, %s, %s,%s)"
+    valu = (student_id,Name,Class,Status,Quarter,PaidAmt)
+    cursor.execute(msql, valu)
+    mydb.commit()
+    print(cursor.rowcount, "record(s) inserted.")
+
+# Define the function to view Fee details
+def view_fee():
+    cursor = mydb.cursor()
+    cursor.execute("SELECT * FROM fee")
+    result = cursor.fetchall()
+    for row in result:
+        print(row)
+
+# Define the function to update Fee details
+def update_fee():
+    student_id = input("Enter student SrNo: ")
+    Name = input("Enter student Name: ")
+    Class = input("Enter student Class: ")
+    Status = input("Enter student Status(Paid/Due): ")
+    Quarter = input("Enter student Quarter: ")
+    PaidAmt = input("Enter student PaidAmt: ")  
+    cursor = mydb.cursor()
+    sqlx = "UPDATE fee SET Name = %s, Class = %s, Status = %s, Quarter = %s,PaidAmt = %s WHERE student_id = %s"
+    valx = (Name,Class,Status,Quarter,PaidAmt,student_id)
+    cursor.execute(sqlx, valx)
+    mydb.commit()
+    print(cursor.rowcount, "record(s) updated.")
+    
+# Define the function to delete Fee details
+def delete_fee():
+    student_id = input("Enter student SrNo: ")
+    cursor = mydb.cursor()
+    sqle = "DELETE FROM fee WHERE student_id = %s"
+    vale = (student_id,)
+    cursor.execute(sqle, vale)
+    mydb.commit()
+    print(cursor.rowcount, "record(s) deleted.")
+
+    # Execute the selected option
+    # Get the user's choice
+def menu():
+    print("                                                                ------------------------------------------------------")    
+    print("                                                             ---| Modules in School Management System |---")
+    print("                                                                ------------------------------------------------------\n\n")
+    print("[1.]->| Student record Module |                                            [2.]->| Staff record Module |")
+    print("[3.]->| Fee record Module |                                                   [4.]->| Exit |                        \n")
+# Get the user's choice:
+# if option first:
+def getchoice():
+    while True:
+        menu()
+        print("")
+        option = input("Enter your choice:: ")
+        if option=='1':
+            print("\n[1.]->| Add New Student record |                                           [2.]->|  View Student details | ")
+            print("[3.]->| Update Student details |                                              [4.]->| Delete Student details | \n")
+            opp = input("Enter your choice:: ")
+            if opp=='1':
+                add_student()
+                input("Press ENTER KEY to continue.....")
+                print()
+            elif opp=='2':
+                view_students()
+                input("Press ENTER KEY to continue.....")
+                print()
+            elif opp=='3':
+                update_student()
+                input("Press ENTER KEY to continue.....")
+                print()
+            elif opp=='4':
+                delete_student()
+                input("Press ENTER KEY to continue.....")
+                print()
+
+## if option Second:
+        elif option=='2':
+            print("[1.]->| Add New Staff record |                                           [2.]->| View Staff details | ")
+            print("[3.] ->| Update Staff details |                                            [4.]->| Delete Staff details | ")
+            opp =input("Enter your choice: ")
+            if opp=='1':
+                add_staff()
+                input("Press ENTER KEY to continue.....")
+                print()
+            elif opp=='2':
+                view_staff()
+                input("Press ENTER KEY to continue.....")
+                print()
+            elif opp=='3':
+                update_staff()
+                input("Press ENTER KEY to continue.....")
+                print()
+            elif opp=='4':
+                delete_staff()
+                input("Press ENTER KEY to continue.....")
+                print()
+
+### if option Third:
+        elif option=='3':
+            print("[1.]->| Add Fee deposit details |                                            [2.]->| View Fee details | ")
+            print("[3.]->| Update Fee details |                                                   [4.]->| Delete Fee details | ")
+            opp = input("Enter your choice: ")
+            if opp=='1':
+                fee()
+                input("Press ENTER KEY to continue.....")
+                print()
+            elif opp=='2':
+                view_fee()
+                input("Press ENTER KEY to continue.....")
+                print()
+            elif opp=='3':
+                update_fee()
+                input("Press ENTER KEY to continue.....")
+                print()
+            elif opp=='4':
+                delete_fee()
+                input("Press ENTER KEY to continue.....")
+                print()
+#### if option Fourth:
+        elif option=='4':
+            print()
+            print("Exited !")
+            print("Succesfully,")
+            print("Thanks")
+            print("For")
+            print("Coming :-)")
+            print()
+            print()
+            print()
+            print()
+            break
+        
+# Recall Choice function =>
+getchoice()
+# Disconnecting from the server =>
+mydb.close()
