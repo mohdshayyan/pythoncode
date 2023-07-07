@@ -18,12 +18,12 @@ print(mydb,"connected to server")
 print("-"*130)
 
     # CREATING A TABLE
-'''
+
 def create_Guests():
     cursor = mydb.cursor()
     cursor.execute('CREATE TABLE Guests (Id VARCHAR(255),name VARCHAR(255),rno VARCHAR(255),typ VARCHAR(255), loc VARCHAR(255), guest VARCHAR(255),rent VARCHAR(255),status VARCHAR(255))')
     print("Table created successfully.")
-'''
+
 # Define the function to add a new guest
 def add_guest():
         while True:
@@ -53,25 +53,23 @@ def view_Guests():
     result = cursor.fetchall()
     for row in result:
         print(row)
-        
-        
-# Define the function to update Guest details
+
 def update_Guest():
     Id = input("Enter Guest Id: ")
-    name =input("Enter Guest Name : ") 
-    rno = int(input("Enter Room No. : "))
-    typ = input("Enter Room typ(Simple/Delux/Super Delux):")
-    guest = int(input("Enter maximum number of guests : "))
-    loc = input("Enter Location details : ")
-    rent = int(input("Enter Per Day Charges : "))
-    status =input("Vacant/Empty : ")
+    name = input("Enter Guest Name: ")
+    rno = input("Enter Room No.: ")
+    typ = input("Enter Room type (Simple/Delux/Super Delux): ")
+    guest = input("Enter maximum number of guests: ")
+    loc = input("Enter Location details: ")
+    rent = input("Enter Per Day Charges: ")
+    status = input("Vacant/Empty: ")
     cursor = mydb.cursor()
-    sql = "UPDATE Guests SET name = %s, rno = %s, typ = %s, guest = %s, loc = %s, rent= %s, status = %s WHERE Id = %s"
-    val = (Id,name,rno,typ,loc,guest,rent,status)
+    sql = "UPDATE Guests SET name = %s, rno = %s, typ = %s, guest = %s, loc = %s, rent = %s, status = %s WHERE Id = %s"
+    val = (name, rno, typ, guest, loc, rent, status, Id)
     cursor.execute(sql, val)
     mydb.commit()
-    print(cursor.rowcount, "record(s) updated.")    
-
+    print(cursor.rowcount, "record(s) updated.")
+        
 
 # Define the function to delete Guest details
 def delete_Guest():
@@ -88,7 +86,7 @@ def delete_Guest():
 def getchoice():
     while True:
         menu()
-#        print("0. Create a Table of Room record")
+        print("0. Create a Table of Room record")
         print("1. Create a New Room record                              2. Show All Rooms  ")
         print("3. Update Guest details                                       4. Delete Guest details  ")        
         print("5. Exit From The System\n")
@@ -97,8 +95,8 @@ def getchoice():
             add_guest()
             input("Press ENTER KEY to continue.....")
             print()
-#        elif opp=='0':
-#            create_Guests()            
+        elif opp=='0':
+            create_Guests()            
         elif opp=='2':
             view_Guests()                
             input("Press ENTER KEY to continue.....")
